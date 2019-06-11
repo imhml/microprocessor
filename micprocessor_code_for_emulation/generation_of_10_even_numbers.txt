@@ -1,0 +1,10 @@
+;Write an ASP to generate first 10 even numbers.
+MVI A, 00H 
+MVI B, 02H 
+MVI C, 0AH 
+LXI H, 4200H 
+LOOP: ADD B 
+MOV M, A 
+INX H 
+DCR C 
+JNZ LOOP 

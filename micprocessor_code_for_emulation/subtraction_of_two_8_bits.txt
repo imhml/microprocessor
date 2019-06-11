@@ -1,0 +1,14 @@
+;Subtract the contents of memory locations 4150H from 4151H and place the result in the memory locations 4152Hand 4153H (8 ;bit subtraction). 
+MVI C, 00H 	;Initialize the C register to store borrow 
+LDA 4150H	;load the first operand 
+MOV B, A 
+LDA 4051H 	;load the second operand 
+SUB B 		;Subtract the value 
+JNC LOOP	;jump if not carry 
+CMA 		;complements the accumulator to calculate 2' complement 
+INR A 
+INR C 
+LOOP: STA 4152	;store the difference 
+MOV A, C 
+STA 4153 	;store the borrow 
+HLT 
